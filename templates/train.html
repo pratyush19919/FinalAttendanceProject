@@ -1,0 +1,162 @@
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+   Required meta tags
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     Bootstrap CSS
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body> -->
+
+    {% extends "bootstrap/base.html" %}
+    {% import "bootstrap/wtf.html" as wtf %}
+    
+    {% block title %}
+    Attendance Portal
+    {% endblock %}
+    
+    {% block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('.static', filename='starter_template.css')}}">
+    {% endblock %}
+    
+    {% block content %}
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Smart Attendance</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            
+            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+      </div>
+    </nav>
+    <br/><br/>
+
+  
+    <div style="text-align: center; display: block; margin-top:20px; margin-left: auto; margin-right: auto; width: 80%;">
+      <img src="https://yoyosarkari.com/wp-content/uploads/2019/12/NIELT.jpg" alt="NIELIT Logo">
+      <h1>Train Data</h1>
+    <h3>Your images are being captured sucessfully,Now train photos of {{name}}</h3>
+    </div>
+
+
+
+
+
+   
+    <div id="loginbox" style="margin-top:6px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+      <div class="panel panel-info">
+              <div class="panel-heading">
+                  <div class="panel-title">Registration</div>
+                  <!-- <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div> -->
+              </div>     
+
+              <div style="padding-top:30px" class="panel-body">
+
+                  <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                      
+                  <form action='{{ url_for("train_face")}}' method = "POST" id="loginform" class="form-horizontal" role="form">
+                              
+                      <div style="margin-bottom: 25px" class="input-group">
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                  <input id="login-username" type="text" class="form-control" name="name" value="" placeholder="Confirm Your Name" required> 
+                                                                         
+                              </div>
+                          
+                      <!-- <div style="margin-bottom: 25px" class="input-group">
+                                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                  <input id="login-password" type="number" class="form-control" name="id_student" placeholder="ID" required>
+                              </div> -->
+                              
+      <!-- <form action='{{ url_for("train_face")}}' method = "POST">
+      
+      
+        
+        <div class="col-auto">
+          <input class='form-control mt-3' name="name" placeholder='Confirm Your Name' type="text" required>
+        </div>
+        
+        
+        <button type="submit" class="btn btn-primary mb-3">Train the data</button>
+      </form> -->
+                        
+                          <div style="margin-top:10px" class="form-group">
+                              <!-- Button -->
+
+                              <div class="col-sm-12 controls">
+                                <!-- <a id="btn-login" href="#" class="btn btn-success waves-effect waves-light">Capture Images</a> -->
+                                <button  id="btn-login" class="btn btn-success waves-effect waves-light"  type="submit">Train the data</button>
+                                
+
+                              </div>
+                          </div>
+
+
+                          <!-- <div class="form-group">
+                              <div class="col-md-12 control">
+                                  <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                      Don't have an account! 
+                                  <a href="#" onclick="$('#loginbox').hide(); $('#signupbox').show()">
+                                      Sign Up </a><a href="https://bbbootstrap.com">Here</a>
+                                  
+                                  </div>
+                              </div>
+                          </div>     -->
+                      </form>     
+
+
+
+                  </div>                     
+              </div>  
+  </div>
+
+
+
+
+    
+
+
+    
+    <!-- <form action='{{ url_for("train_face")}}' method = "POST">
+      
+      
+        
+        <div class="col-auto">
+          <input class='form-control mt-3' name="name" placeholder='Confirm Your Name' type="text" required>
+        </div>
+        
+        
+        <button type="submit" class="btn btn-primary mb-3">Train the data</button>
+      </form> -->
+      
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+
+    {% endblock %}
+  <!-- </body>
+</html> -->
